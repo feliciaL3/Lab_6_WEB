@@ -53,15 +53,30 @@ const AppProvider = ({ children }) => {
   };
 
   const addToFavorites = (book) => {
-    setFavoriteBooks([...favoriteBooks, book]);
+    const updatedFavoriteBooks = [...favoriteBooks, book];
+    setFavoriteBooks(updatedFavoriteBooks);
+    localStorage.setItem('favoriteBooks', JSON.stringify(updatedFavoriteBooks));
+    setResultTitle("Added to favorites!");
   };
+
+  const removeFromFavorites = (id) => {
+    const updatedFavorites = favoriteBooks.filter(book => book.id !== id);
+    setFavoriteBooks(updatedFavorites);
+    localStorage.setItem('favoriteBooks', JSON.stringify(updatedFavorites));
+  };
+
+  
+  useEffect(() => {
+    const storedFavoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || [];
+    setFavoriteBooks(storedFavoriteBooks);
+  }, []);
 
   useEffect(() => {
     fetchBooks();
   }, [searchTerm]);
 
   return (
-    <AppContext.Provider value={{ searchTerm, setSearchTerm, books, loading, resultTitle, favoriteBooks, addToFavorites }}>
+    <AppContext.Provider value={{ searchTerm, setSearchTerm, books, loading, resultTitle, favoriteBooks, addToFavorites, removeFromFavorites }}>
       {children}
     </AppContext.Provider>
   );
