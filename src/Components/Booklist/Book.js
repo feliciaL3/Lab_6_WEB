@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../../Context';
 import "./Booklist.css";
 
 const Book = (book) => {
+  const { addToFavorites } = useGlobalContext();
+  const [isAdded, setIsAdded] = useState(false); // Definim isAdded și setIsAdded folosind useState
+
+  const handleAddToFavorites = () => {
+    addToFavorites(book);
+    setIsAdded(true); // Setăm starea pentru a indica că cartea a fost adăugată la favorite
+  };
+
   return (
     <div className='book-item flex flex-column flex-sb'>
       <div className='book-item-img'>
@@ -29,9 +38,10 @@ const Book = (book) => {
           <span className='text-capitalize fw-7'>First Publish Year: </span>
           <span>{book.first_publish_year}</span>
         </div>
+        <button onClick={handleAddToFavorites} disabled={isAdded}>{isAdded ? 'Added to favorite' : 'Add to favorite'}</button>
       </div>
     </div>
   )
 }
 
-export default Book
+export default Book;
