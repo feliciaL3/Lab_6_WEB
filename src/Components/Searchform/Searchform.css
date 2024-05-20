@@ -4,7 +4,9 @@
 }
 
 .search-form-elem {
-    padding: 1rem 2.8rem;
+    /* distanta lupa */
+
+    padding: 1rem 18.8rem; 
     border-radius: 3.8rem;
 }
 
@@ -18,5 +20,5 @@
 }
 
 .search-form-elem .icon {
-    color: #232946;
+    color: #b4adb4;
 }

@@ -205,10 +205,10 @@ input {
 
 /* Stilurile pentru modul întunecat */
 .dark-mode {
-    --grey-color: #181717; /* Setează culoarea gri în modul întunecat */
-    --white-color: #404040; /* Setează culoarea albă în modul întunecat */
-    --black-color: #5a5a5a; /* Setează culoarea neagră în modul întunecat */
-    --light-black-color: #262323; /* Setează culoarea gri deschis în modul întunecat */
+    --grey-color: #6c6b6b; /* Setează culoarea gri în modul întunecat */
+    --white-color: #080808; /* Setează culoarea albă în modul întunecat  Produse+search*/
+    --black-color: #5e5e5e; /* Setează culoarea neagră în modul întunecat textul butoane + moto */
+    --light-black-color: #4e4b4b; /* Setează culoarea gri deschis în modul întunecat */
   }
   
   /* Suprascrieri pentru text */
