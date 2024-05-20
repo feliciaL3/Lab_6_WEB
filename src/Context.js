@@ -1,8 +1,6 @@
-// Context.js
+import React, { useState, useContext, useEffect, createContext } from 'react';
 
-import React, { useState, useContext, useEffect } from 'react';
-
-const AppContext = React.createContext();
+const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("the lost world");
@@ -10,6 +8,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [resultTitle, setResultTitle] = useState("");
   const [favoriteBooks, setFavoriteBooks] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
 
   const URL = "http://openlibrary.org/search.json?title=";
 
@@ -65,7 +64,10 @@ const AppProvider = ({ children }) => {
     localStorage.setItem('favoriteBooks', JSON.stringify(updatedFavorites));
   };
 
-  
+  const toggleDarkMode = () => {
+    setDarkMode(prevMode => !prevMode);
+  };
+
   useEffect(() => {
     const storedFavoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || [];
     setFavoriteBooks(storedFavoriteBooks);
@@ -75,8 +77,17 @@ const AppProvider = ({ children }) => {
     fetchBooks();
   }, [searchTerm]);
 
+  // Aplicarea clasei dark-mode în funcție de starea darkMode
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
+
   return (
-    <AppContext.Provider value={{ searchTerm, setSearchTerm, books, loading, resultTitle, favoriteBooks, addToFavorites, removeFromFavorites }}>
+    <AppContext.Provider value={{ searchTerm, setSearchTerm, books, loading, resultTitle, favoriteBooks, addToFavorites, removeFromFavorites, darkMode, toggleDarkMode }}>
       {children}
     </AppContext.Provider>
   );

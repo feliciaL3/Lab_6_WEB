@@ -202,3 +202,25 @@ input {
     text-transform: uppercase;
     padding: 18px 0 24px 0;
 }
+
+/* Stilurile pentru modul întunecat */
+.dark-mode {
+    --grey-color: #181717; /* Setează culoarea gri în modul întunecat */
+    --white-color: #404040; /* Setează culoarea albă în modul întunecat */
+    --black-color: #5a5a5a; /* Setează culoarea neagră în modul întunecat */
+    --light-black-color: #262323; /* Setează culoarea gri deschis în modul întunecat */
+  }
+  
+  /* Suprascrieri pentru text */
+  .dark-mode .text-black {
+    color: var(--white-color);
+  }
+  
+  .dark-mode .text-white {
+    color: var(--black-color);
+  }
+  
+  .dark-mode .text-light-black {
+    color: var(--light-black-color);
+  }
+  

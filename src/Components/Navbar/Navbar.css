@@ -85,3 +85,8 @@
         display: flex;
     }
 }
+/* Stiluri pentru modul întunecat */
+.dark-mode {
+    background-color: #010101c4; /* Setează culoarea de fundal la negru */
+    color: #7a7a7a; /* Setează culoarea textului la alb */
+  }

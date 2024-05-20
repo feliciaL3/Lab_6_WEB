@@ -2,16 +2,25 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Navbar/Navbar.css';
+import '../../index.css';
+import { useGlobalContext } from '../../Context';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 
 function Navbar() {
   const [toggleMenu, settoggleMenu] = useState(false);
   const handleNavbar = () => settoggleMenu(!toggleMenu);
+  const { darkMode, toggleDarkMode } = useGlobalContext();
+
+  const handleSwitchMode = () => {
+    toggleDarkMode();
+  };
 
   return (
-    <nav className='navbar' id="navbar">
+    
+    <nav className={`navbar ${darkMode ? 'dark-mode' : ''}`} id="navbar">
       <div className='container navbar-content flex'>
         <div className='brand-and-toggler flex flex-sb'>
+        <button onClick={handleSwitchMode}>Toggle Dark Mode</button>
           <Link to="/" className='navbar-brand flex'>
             <span className='fw-7 fs-20 ls-1'>Library</span>
           </Link>

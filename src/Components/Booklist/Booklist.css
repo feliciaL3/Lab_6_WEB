@@ -79,3 +79,17 @@
         max-width: 120px;
     }
 }
+
+/* styles.css */
+.favorite-book-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .favorite-book-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  
